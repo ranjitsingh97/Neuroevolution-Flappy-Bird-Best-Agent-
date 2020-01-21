@@ -1,8 +1,7 @@
-var cnv;
-let bird;
 let pipes = [];
-let slider;
 let counter = 0;
+let slider;
+var cnv;
 
 let brainJSON;
 
@@ -11,11 +10,15 @@ function preload() {
 }
 
 function setup() {
-//  createCanvas(600,400);
-  cnv = createCanvas(600, 400);
+  cnv = createCanvas(600,400);
   var x = (windowWidth - width) / 2;
   var y = (windowHeight - height) / 2;
-  slider = createSlider(1, 100, 1);
+  cnv.position(x, y);
+  input = createP('Slider to speed up');
+  input.position((windowWidth / 2) - 250,(windowHeight/2) + 210 );
+  //speedup = createElement('h2', 'Slider to spped up the training');
+  slider = createSlider(1, 1000, 1);
+  slider.position((windowWidth / 2) - 250,(windowHeight/2) + 250 );
   let birdBrain = NeuralNetwork.deserialize(brainJSON);
   bird = new Bird(birdBrain);
 }
